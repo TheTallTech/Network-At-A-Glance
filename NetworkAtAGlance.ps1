@@ -27,6 +27,12 @@ Read-Host " "
 Write-Host "Initializing script...   This may take awhile depending on how many devices are in CSV" -ForegroundColor Yellow
 
 $LongestLength = 1
+
+if (-Not(Test-Path "$PSScriptRoot\NetworkDevices.csv")) {
+  Write-Host "Error: You're missing the NetworkDevices.csv file. Please see the NetworkDevices-Sample.csv"
+  exit 1
+}
+
 $DevicesCSV = Import-Csv "$PSScriptRoot\NetworkDevices.csv"
 $FullDeviceDetailedList = @()
 
