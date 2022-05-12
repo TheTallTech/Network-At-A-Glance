@@ -29,7 +29,9 @@ Write-Host "Initializing script...   This may take awhile depending on how many 
 $LongestLength = 1
 
 if (-Not(Test-Path "$PSScriptRoot\NetworkDevices.csv")) {
-  Write-Host "Error: You're missing the NetworkDevices.csv file. Please see the NetworkDevices-Sample.csv"
+  Write-Host "Error: You're missing the NetworkDevices.csv file. Please see the NetworkDevices-Sample.csv" -ForegroundColor Red
+  Write-Host "Script will exit in 30 seconds." -ForegroundColor Yellow
+  Start-Sleep -Seconds 30
   exit 1
 }
 
